@@ -455,9 +455,10 @@ class COCOeval:
 
                 if iouThr == 0.5:
                     for i in range(20): 
-                        pr = s[:,:,i,aind,mind]
-                        ap = np.mean(pr[pr > -1])
-                        print '{:.1f}'.format(100 * ap)
+                        nowpr = s[:,:,i,aind,mind]
+                        nowpr2 = nowpr.copy()
+                        nowap = np.mean(nowpr2[nowpr2 > -1])
+                        print '{:.1f}'.format(100 * nowap)
 
                 s = s[:,:,:,aind,mind]
 
