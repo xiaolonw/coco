@@ -452,7 +452,15 @@ class COCOeval:
                 if iouThr is not None:
                     t = np.where(iouThr == p.iouThrs)[0]
                     s = s[t]
+
+                if iouThr == 0.5:
+                    for i in range(20): 
+                        precision = s[:,:,i + 1,aind,mind]
+                        ap = np.mean(precision[precision > -1])
+                        print '{:.1f}'.format(100 * ap)
+
                 s = s[:,:,:,aind,mind]
+
             else:
                 # dimension of recall: [TxKxAxM]
                 s = self.eval['recall']
