@@ -455,7 +455,7 @@ class COCOeval:
 
                 if iouThr == 0.5:
                     for i in range(20): 
-                        pr = s[:,:,i + 1,aind,mind]
+                        pr = s[:,:,i,aind,mind]
                         ap = np.mean(pr[pr > -1])
                         print '{:.1f}'.format(100 * ap)
 
